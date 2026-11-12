@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TatapAksar · the teleprompter in your Mac's notch</title>
+<meta name="description" content="They can tell when you're reading. TatapAksar puts your script in the MacBook notch, next to the camera, and scrolls only while you talk.">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="site.css?v=4">
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>TatapAksar</a>
+  <nav aria-label="Sections">
+    <a href="#follow">Follow</a>
+    <a href="#script">Script</a>
+    <a href="#time">Time</a>
+    <a href="#listen">Listen</a>
+    <a href="#private">Privacy</a>
+  </nav>
+  <div class="nav-right">
+    <span class="count" id="count" aria-hidden="true">1 / 8</span>
+    <a class="get" href="#get">Get</a>
+  </div>
+</header>
+
+<div class="rail" id="rail" aria-label="Slides"></div>
+<button class="next" id="next" aria-label="Next slide"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M10 4v12m0 0l-5-5m5 5l5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+<main class="deck" id="deck">
+
+  <section class="slide" id="top" data-title="TatapAksar">
+    <div class="wrap center">
+      <p class="eyebrow green r">TatapAksar</p>
+      <h1 class="r">They can tell<br><span class="grad-green">when you're reading.</span></h1>
+      <p class="lede r">TatapAksar puts your script in the notch, right next to the camera. It scrolls while you talk and stops when you stop.</p>
+      <p class="links r"><a class="btn" href="#get">Get TatapAksar</a><a class="more" href="#follow">Watch it keep up <span aria-hidden="true">›</span></a></p>
+      <div class="demo r" data-demo="prompter">
+        <div class="screen">
+          <div class="menubar"><span><b>Keynote</b><i>File</i><i>Edit</i><i>View</i><i>Play</i></span><span><i>Thu 9:41</i></span></div>
+          <div class="notch-wrap">
+            <div class="card" data-mode="prompter">
+              <div class="c-top">
+                <div class="c-tabs"><span class="c-tab" data-tab="prompter">Prompter</span><span class="c-tab" data-tab="listen">Listen</span></div>
+                <div class="c-gap"></div>
+                <div class="c-status"><span data-el="status">Paused</span><span class="c-dot" data-el="dot"></span></div>
+              </div>
+              <div class="c-stage"><div class="c-flow" data-el="flow"></div></div>
+              <div class="c-foot">
+                <span class="c-play" data-el="play"></span><span class="c-chip">↺</span>
+                <span class="c-bar"><span data-el="bar"></span></span>
+                <span class="c-time" data-el="time">0:40</span>
+                <span class="c-chip">A</span><span class="c-chip">A</span><span class="c-chip">EN</span>
+              </div>
+            </div>
+          </div>
+          <div class="camera" aria-hidden="true"></div>
+        </div>
+        <div class="voice"><div class="wave" data-el="wave" aria-hidden="true"></div><p class="voice-label" data-el="label">your voice</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="follow" data-title="It follows you">
+    <div class="wrap">
+      <p class="eyebrow green r">Voice follow</p>
+      <h2 class="r">Talk, and it moves.<br><span class="dim">Stop, and it stops.</span></h2>
+      <div class="tiles three">
+        <article class="tile r">
+          <div class="strip" data-strip="follow"><span>Thanks</span> <span>for</span> <span>being</span> <span>here</span> <span>today</span></div>
+          <h3>One word at a time</h3>
+          <p>The words you've said fade. The next ones sit at the top, a few centimetres from the lens. No speed dial to set. Your voice is the speed.</p>
+        </article>
+        <article class="tile r">
+          <div class="strip" data-strip="wait"><span>So</span> <span>here's</span> <span>the</span> <span>plan</span> <i>· · ·</i></div>
+          <h3>Go quiet. It holds</h3>
+          <p>Take a breath. Answer a question. Tell the story that isn't in your notes. It stays put until it hears the script again.</p>
+        </article>
+        <article class="tile r">
+          <div class="strip" data-strip="jump"><span>one</span> <span>two</span> <span>three</span> <span>four</span> <span>five</span></div>
+          <h3>Lose your place. It finds you</h3>
+          <p>Skip a paragraph or start a sentence over, and it catches up within a few words. Or click any word and carry on from there.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="script" data-title="It reads your script">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow green r">Script smarts</p>
+        <h2 class="r">Paste your messy notes.<br><span class="dim">It works out what's yours to say.</span></h2>
+        <p class="body r">Slide titles. Timings. “(pause here)”. You wrote those for yourself, so they show up as cues and it doesn't wait for you to say them. A line it can't call, like a one-word heading, gets checked by a model running on your Mac: <strong>Apple Intelligence</strong>, or <strong>Gemma</strong> if you have it. The model can label a line. It can't change one.</p>
+      </div>
+      <div class="sheet r" aria-label="An example script with cues highlighted">
+        <p class="note"><em>heading · 40s</em>Slide 3: Results (±40 detik)</p>
+        <p><span class="note inline">(tunjuk grafik)</span> Sales doubled in the second half. <span class="note inline">(jeda)</span></p>
+        <p>And we did it with the same team.</p>
+        <p class="note"><em>checked on your Mac</em>Penutup</p>
+        <p>Thank you. I'd love your questions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="time" data-title="Time and points">
+    <div class="wrap">
+      <p class="eyebrow green r">Time and points</p>
+      <h2 class="r">You wrote “40 seconds”.<br><span class="dim">Now it's a countdown.</span></h2>
+      <div class="tiles two">
+        <article class="tile big r">
+          <div class="clock"><span class="clock-num" id="clockNum">0:40</span><span class="clock-cap">Slide 3: Results</span></div>
+          <h3>The clock is already in your notes</h3>
+          <p>Put a time in a heading and that part gets its own countdown. Put <code>minutes: 5</code> on the first line for the whole talk. It goes amber when the rest won't fit at the speed you're going.</p>
+        </article>
+        <article class="tile big r">
+          <ul class="points" id="points">
+            <li>Why this role</li>
+            <li class="must">Why me</li>
+            <li class="must">My question</li>
+          </ul>
+          <h3>The three things you can't forget</h3>
+          <p>Mark a heading with <code>!</code> and give it a phrase to listen for. Say it in your own words and it still gets ticked. About to run out of time before one? One click jumps you to it. At the end you see your time, your pace and what you missed.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide vice" id="listen" data-title="Listen">
+    <div class="wrap center">
+      <p class="eyebrow r"><span class="grad-vice">Listen</span></p>
+      <h2 class="r">Didn't catch that?<br><span class="grad-vice">Read it.</span></h2>
+      <p class="lede r">Switch to Listen and the notch captions whoever is talking: the person across the table, or the call on your Mac. Copy the transcript when they're done.</p>
+      <div class="demo r" data-demo="listen">
+        <div class="screen">
+          <div class="menubar"><span><b>FaceTime</b><i>File</i><i>Edit</i><i>Video</i></span><span><i>Thu 9:41</i></span></div>
+          <div class="notch-wrap">
+            <div class="card" data-mode="listen">
+              <div class="c-top">
+                <div class="c-tabs"><span class="c-tab" data-tab="prompter">Prompter</span><span class="c-tab" data-tab="listen">Listen</span></div>
+                <div class="c-gap"></div>
+                <div class="c-status"><span data-el="status">Off</span><span class="c-dot" data-el="dot"></span></div>
+              </div>
+              <div class="c-stage"><div class="c-flow" data-el="flow"></div></div>
+              <div class="c-foot">
+                <span class="c-play" data-el="play"></span><span class="c-chip">mic</span><span class="c-spacer"></span>
+                <span class="c-chip">A</span><span class="c-chip">A</span><span class="c-chip">EN</span>
+              </div>
+            </div>
+          </div>
+          <div class="camera" aria-hidden="true"></div>
+        </div>
+        <div class="voice"><div class="wave" data-el="wave" aria-hidden="true"></div><p class="voice-label" data-el="label">someone else's voice</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="private" data-title="Privacy">
+    <div class="wrap center">
+      <p class="eyebrow green r">Privacy</p>
+      <h2 class="r">Nothing leaves<br>this Mac.</h2>
+      <div class="tiles three left">
+        <article class="tile r"><h3>No server</h3><p>Your Mac does the listening with Apple's built-in speech models. No account. No upload. It works on a plane.</p></article>
+        <article class="tile r"><h3>Shut means off</h3><p>The mic runs only while the card is open and you've pressed start. Fold it back into the notch and it's off.</p></article>
+        <article class="tile r"><h3>Only you see it</h3><p>It's set to stay out of screen shares and recordings. Nothing you say is saved.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="keys" data-title="Keys">
+    <div class="wrap">
+      <p class="eyebrow green r">Control</p>
+      <h2 class="r">Eight keys.<br><span class="dim">Or none at all.</span></h2>
+      <dl class="keys r">
+        <div><dt><kbd>⌃</kbd><kbd>⌥</kbd><kbd>P</kbd></dt><dd>Open or hide, from anywhere</dd></div>
+        <div><dt><kbd>Space</kbd></dt><dd>Start or pause</dd></div>
+        <div><dt><kbd>↑</kbd><kbd>↓</kbd></dt><dd>Back or forward a line</dd></div>
+        <div><dt><kbd>⌘</kbd><kbd>V</kbd></dt><dd>Paste a script</dd></div>
+        <div><dt><kbd>⌘</kbd><kbd>+</kbd><kbd>−</kbd></dt><dd>Text size</dd></div>
+        <div><dt><kbd>Tab</kbd></dt><dd>Prompter ↔ Listen</dd></div>
+        <div><dt><kbd>R</kbd></dt><dd>Back to the top</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>Fold into the notch</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="slide" id="get" data-title="Get it">
+    <div class="wrap center">
+      <h2 class="r huge">Look up.</h2>
+      <p class="lede r">A small Mac app, free to build. You need macOS 26 or later and Xcode's command-line tools.</p>
+      <div class="code r">
+        <button class="copy" data-copy="./scripts/build-app.sh --run">Copy</button>
+        <pre><code>./scripts/build-app.sh --run</code></pre>
+      </div>
+      <p class="fine r">That builds the app and opens it. Click the notch, drop in a script, press Space. No notch on your Mac? It hangs from the middle of the menu bar.</p>
+      <p class="fine foot r">For anyone who'd rather look up.</p>
+    </div>
+  </section>
+</main>
+
+<script src="demo.js?v=4"></script>
+</body>
+</html>
