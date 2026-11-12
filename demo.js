@@ -151,7 +151,7 @@
       bars.forEach((b, i) => {
         const energy = speaking ? 0.35 + 0.65 * Math.abs(Math.sin(t * 7.3 + i * 0.9) * Math.sin(t * 3.1 + i * 0.37)) : 0.02;
         b.style.height = `${4 + 32 * energy * (0.35 + 0.65 * Math.sin((i / (bars.length - 1)) * Math.PI))}px`;
-        b.style.background = !speaking ? "rgba(245,245,247,0.28)" : kind === "listen" ? `hsl(${275 + 95 * (i / bars.length)} 95% 68%)` : "#99b8a3";
+        b.style.background = !speaking ? "rgba(23,34,45,0.22)" : kind === "listen" ? `hsl(${275 + 95 * (i / bars.length)} 95% 68%)` : "#e0901f";
       });
       raf = requestAnimationFrame(loop);
     }
@@ -333,6 +333,36 @@
       leave() { clearInterval(timer); },
     });
   })();
+
+  // ───────────────────────── The logo's eyes ─────────────────────────
+  // The pupils follow the pointer, blink now and then, and the whole word hops
+  // when you touch it: squash, stretch, land.
+  const logos = [...document.querySelectorAll(".logo")];
+  const pupils = [...document.querySelectorAll(".logo .pupil")];
+  if (!reduce) {
+    let px = innerWidth / 2, py = innerHeight * 0.2, queued = false;
+    const look = () => {
+      queued = false;
+      for (const p of pupils) {
+        const lens = p.parentElement.getBoundingClientRect();
+        const cx = lens.left + lens.width / 2, cy = lens.top + lens.height / 2;
+        const dx = px - cx, dy = py - cy, d = Math.hypot(dx, dy) || 1;
+        const reach = lens.width * 0.2 * Math.min(1, d / 160);
+        p.style.transform = `translate(${(dx / d) * reach}px, ${(dy / d) * reach}px)`;
+      }
+    };
+    addEventListener("pointermove", (e) => { px = e.clientX; py = e.clientY; if (!queued) { queued = true; requestAnimationFrame(look); } }, { passive: true });
+    deck.addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(look); } }, { passive: true });
+    look();
+    const blink = (logo) => { logo.classList.remove("blink"); void logo.offsetWidth; logo.classList.add("blink"); };
+    (function blinkLater() {
+      setTimeout(() => { logos.forEach(blink); if (Math.random() < 0.3) setTimeout(() => logos.forEach(blink), 280); blinkLater(); }, 2600 + Math.random() * 3200);
+    })();
+    const hop = (logo) => { logo.classList.remove("hop", "enter"); void logo.offsetWidth; logo.classList.add("hop"); };
+    logos.forEach((logo) => logo.addEventListener("pointerenter", () => hop(logo)));
+    // The big one drops in on arrival.
+    document.querySelectorAll(".logo.big").forEach((logo) => logo.classList.add("enter"));
+  }
 
   // Fit the 560-pt card to narrow screens.
   function fit() {

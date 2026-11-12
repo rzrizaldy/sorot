@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sorot · the teleprompter in your Mac's notch</title>
 <meta name="description" content="They can tell when you're reading. Sorot puts your script in the MacBook notch, next to the camera, and scrolls only while you talk.">
-<meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="site.css?v=5">
+<meta name="theme-color" content="#e6edf2">
+<link rel="icon" href="img/icon.png">
+<link rel="stylesheet" href="site.css?v=7">
 </head>
 <body>
 
 <header class="nav">
-  <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Sorot</a>
+  <a class="brand" href="#top"><span class="logo" role="img" aria-label="Sorot"><span class="ch" aria-hidden="true">S</span><span class="specs" aria-hidden="true"><span class="arm l"></span><span class="lens"><span class="pupil"></span><span class="lid"></span></span><span class="ch">r</span><span class="lens"><span class="pupil"></span><span class="lid"></span></span><span class="arm r"></span><span class="bridge"></span></span><span class="ch" aria-hidden="true">t</span></span></a>
   <nav aria-label="Sections">
     <a href="#follow">Follow</a>
     <a href="#script">Script</a>
@@ -32,7 +33,7 @@
 
   <section class="slide" id="top" data-title="Sorot">
     <div class="wrap center">
-      <p class="eyebrow green r">Sorot</p>
+      <p class="hero-logo r"><span class="logo big" role="img" aria-label="Sorot"><span class="ch" aria-hidden="true">S</span><span class="specs" aria-hidden="true"><span class="arm l"></span><span class="lens"><span class="pupil"></span><span class="lid"></span></span><span class="ch">r</span><span class="lens"><span class="pupil"></span><span class="lid"></span></span><span class="arm r"></span><span class="bridge"></span></span><span class="ch" aria-hidden="true">t</span></span></p>
       <h1 class="r">They can tell<br><span class="grad-green">when you're reading.</span></h1>
       <p class="lede r">Sorot puts your script in the notch, right next to the camera. It scrolls while you talk and stops when you stop.</p>
       <p class="links r"><a class="btn" href="#get">Get Sorot</a><a class="more" href="#follow">Watch it keep up <span aria-hidden="true">›</span></a></p>
@@ -186,6 +187,7 @@
 
   <section class="slide" id="get" data-title="Get it">
     <div class="wrap center">
+      <img class="app-icon" src="img/icon.png" alt="" width="132" height="132">
       <h2 class="r huge">Look up.</h2>
       <p class="lede r">A small Mac app, free to build. You need macOS 26 or later and Xcode's command-line tools.</p>
       <div class="code r">
@@ -193,11 +195,12 @@
         <pre><code>./scripts/build-app.sh --run</code></pre>
       </div>
       <p class="fine r">That builds the app and opens it. Click the notch, drop in a script, press Space. No notch on your Mac? It hangs from the middle of the menu bar.</p>
+      <p class="links r"><a class="btn" href="https://github.com/rzrizaldy/sorot/releases/latest">Download for Mac</a><a class="more" href="https://github.com/rzrizaldy/sorot">Source on GitHub <span aria-hidden="true">›</span></a></p>
       <p class="fine foot r">For anyone who'd rather look up.</p>
     </div>
   </section>
 </main>
 
-<script src="demo.js?v=5"></script>
+<script src="demo.js?v=7"></script>
 </body>
 </html>
