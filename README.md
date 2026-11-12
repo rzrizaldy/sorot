@@ -16,4 +16,6 @@ shasum -a 256 ~/Downloads/Sorot.dmg
 
 Sorot's own update check does this for you before it opens a new version.
 
+Sorot is free to download: Music is free, and the prompter and Listen are free for three sessions each. **[Sorot Pro](https://sorot.app/buy/)** is $8.99, once, with every update to come.
+
 This repository holds the website and the release downloads. The app's source is private.
