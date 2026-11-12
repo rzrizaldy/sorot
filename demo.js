@@ -45,7 +45,7 @@
     const slide = slides[i];
     slide.classList.add("active");
     dots.forEach((d, k) => d.classList.toggle("on", k === i));
-    count.textContent = `${i + 1} / ${slides.length}`;
+    if (count) count.textContent = `${i + 1} / ${slides.length}`;
     next.classList.toggle("end", i === slides.length - 1);
     next.setAttribute("aria-label", i === slides.length - 1 ? "Back to the top" : "Next slide");
     navLinks.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === `#${slide.id}`));
