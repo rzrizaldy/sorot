@@ -52,9 +52,10 @@
   <p class="updated">Last updated November 12, 2026 (cookieless website analytics)</p>
 
   <div class="tile short">
-    <p><strong>The short version.</strong> Sorot listens and thinks on your Mac. The app has no account, no analytics and no ads. Only four things ever go over the internet:</p>
+    <p><strong>The short version.</strong> Sorot listens and thinks on your Mac. The app has no account, no analytics and no ads. Only five things ever go over the internet:</p>
     <ul>
       <li>a daily check for updates,</li>
+      <li>a speech model, downloaded once, the first time you use Listen,</li>
       <li>song lyrics, only if you turn them on,</li>
       <li>your purchase, if you buy Sorot Pro,</li>
       <li>this website, when you visit it (visits are counted, see below).</li>
@@ -62,7 +63,7 @@
   </div>
 
   <h2>What stays on your Mac</h2>
-  <p><b>Your voice.</b> Speech is turned into text by Apple's speech models, running on your Mac. Sorot doesn't record audio, and nothing you say is uploaded or saved.</p>
+  <p><b>Your voice.</b> Speech is turned into text on your Mac, by Apple's speech models and, in Listen, by OpenAI's open-source Whisper model running on the Mac's Neural Engine. Whisper takes a second look at sentences where it does better than Apple's model (mixed languages, noisy rooms, recordings). Sorot keeps the last two minutes of audio in memory for this while Listen is on, and saves none of it. Nothing you say is uploaded.</p>
   <p><b>The microphone and Mac audio.</b> Sorot listens only while the card is open and you've pressed start. Fold it back into the notch and it stops. macOS asks for your permission first, and you can take it back any time in System Settings › Privacy &amp; Security.</p>
   <p><b>Your script.</b> The last script you pasted is saved in Sorot's settings on your Mac, so it's there next time. Clearing it in the app removes it. Listen's captions stay in memory until you copy them or close the card. If you buy Pro, your license key, which includes your email address, is saved in the same settings.</p>
   <p><b>Checking unclear lines.</b> When a line could be a cue or something to say, a model on your Mac decides. That's Apple Intelligence, or Gemma if you run it yourself with Ollama on the same Mac (Sorot only talks to it at 127.0.0.1). The model sees that one line. It can label it, but it can't change it.</p>
@@ -70,6 +71,7 @@
 
   <h2>What goes over the internet</h2>
   <p><b>Update check, once a day.</b> Sorot downloads a small file, <code>sorot.app/latest.json</code> (or the same file on <code>rzrizaldy.github.io</code> as a fallback), to see whether there's a new version. New versions download from GitHub. These requests carry no ID. Like any web request, they show the server your IP address and the app's version.</p>
+  <p><b>The Whisper model, once.</b> The first time you use Listen, Sorot downloads the model (about 630 MB) from <a href="https://huggingface.co/argmaxinc/whisperkit-coreml">Hugging Face</a> in the background, only on Wi-Fi or another unmetered connection, and keeps it in <code>~/Library/Application Support/Sorot</code>. That download carries nothing about you or what you say.</p>
   <p><b>Lyrics, if you turn them on.</b> They're off until you switch them on. Then, for each song you play, Sorot sends the song's title, artist, album and length to <a href="https://lrclib.net">lrclib.net</a>, a free lyrics library, and keeps the result in a cache on your Mac. Nothing about you is sent.</p>
   <p><b>Buying Sorot Pro.</b> Payment is handled by <a href="https://stripe.com/privacy">Stripe</a>. Sorot never sees your card. After you pay, our small server at <code>api.sorot.app</code> (run on Cloudflare) asks Stripe for your <b>email address</b> and <b>order number</b>, and turns them into your license key. We keep a copy of the key, filed under the order and the email, so we can send it again if you lose it. The key is checked on your Mac, offline. Sorot never calls home to check it.</p>
 
@@ -87,6 +89,7 @@
     <li><b>GitHub</b>: hosts the website and the downloads.</li>
     <li><b>Stripe</b>: takes payments.</li>
     <li><b>Cloudflare</b>: runs the license server and our visit counter, and provides Web Analytics.</li>
+    <li><b>Hugging Face</b>: hosts the Whisper model Sorot downloads once.</li>
     <li><b>lrclib.net</b>: lyrics, only if you turn them on.</li>
     <li><b>Google Fonts</b>: the logo's font on this site.</li>
   </ul>
@@ -96,7 +99,7 @@
   <ul>
     <li>Turn lyrics off, and nothing about your music leaves the Mac.</li>
     <li>Want your purchase record deleted, or a copy of what we hold? Email <a href="mailto:support@sorot.app">support@sorot.app</a>. Stripe keeps payment records it has to by law.</li>
-    <li>To remove Sorot completely, delete the app, then <code>~/Library/Preferences/com.rzrizaldy.sorot.plist</code> and <code>~/Library/Caches/com.rzrizaldy.sorot</code>.</li>
+    <li>To remove Sorot completely, delete the app, then <code>~/Library/Preferences/com.rzrizaldy.sorot.plist</code> and <code>~/Library/Caches/com.rzrizaldy.sorot</code> and <code>~/Library/Application Support/Sorot</code>.</li>
   </ul>
 
   <h2>Changes and questions</h2>
