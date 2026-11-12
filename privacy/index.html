@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Sorot</title>
+<meta name="description" content="What Sorot keeps on your Mac, and the few things that ever go over the internet.">
+<link rel="canonical" href="https://sorot.app/privacy/">
+<meta name="theme-color" content="#e6edf2">
+<link rel="icon" href="/img/icon.png?v=2">
+<script>
+  try {
+    const saved = localStorage.getItem("sorot-theme");
+    document.documentElement.dataset.theme = saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  } catch { document.documentElement.dataset.theme = "light"; }
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@144,750,100&text=Sorot&display=swap">
+<link rel="stylesheet" href="/site.css?v=29">
+<style>
+  body { overflow: auto; background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%) fixed; }
+  .doc { position: relative; max-width: 720px; margin: 0 auto; padding: calc(var(--nav) + 56px) 22px 80px; }
+  .doc::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(46% 40% at 50% -6%, var(--glow-1), var(--glow-2) 55%, transparent 75%); }
+  .doc h1 { font-size: clamp(40px, 6vw, 64px); }
+  .doc .updated { margin-top: 12px; color: var(--gray); font-size: 14px; font-weight: 500; }
+  .doc .short { margin-top: 28px; }
+  .doc h2 { font-size: 26px; letter-spacing: -0.015em; margin: 44px 0 12px; line-height: 1.2; }
+  .doc p, .doc li { color: var(--gray); font-size: 17px; line-height: 1.55; font-weight: 500; }
+  .doc p + p { margin-top: 12px; }
+  .doc strong, .doc b { color: var(--text); font-weight: 650; }
+  .doc ul { padding-left: 20px; margin: 12px 0 0; display: grid; gap: 8px; }
+  .doc a:not(.btn) { color: var(--cue); font-weight: 600; }
+  .doc a:not(.btn):hover { text-decoration: underline; }
+  .doc .tile p { font-size: 17px; }
+  .doc .tile ul { margin-top: 10px; }
+  .back { margin-top: 48px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="/"><span class="logo" role="img" aria-label="Sorot"><span class="ch" aria-hidden="true">S</span><span class="specs" aria-hidden="true"><span class="arch"></span><span class="lens a"><span class="pupil"></span><span class="lid"></span></span><span class="nose">r</span><span class="lens b"><span class="pupil"></span><span class="lid"></span></span></span><span class="ch" aria-hidden="true">t</span></span></a>
+  <div class="nav-right">
+    <a class="get" href="https://github.com/rzrizaldy/sorot/releases/latest/download/Sorot.dmg">Download</a>
+  </div>
+</header>
+
+<main class="doc">
+  <p class="eyebrow green">Privacy</p>
+  <h1>Nothing leaves this Mac.<br><span class="dim">Almost nothing. Here's all of it.</span></h1>
+  <p class="updated">Last updated November 12, 2026</p>
+
+  <div class="tile short">
+    <p><strong>The short version.</strong> Sorot listens and thinks on your Mac. There's no account, no analytics and no ads. Only four things ever go over the internet:</p>
+    <ul>
+      <li>a daily check for updates,</li>
+      <li>song lyrics, only if you turn them on,</li>
+      <li>your purchase, if you buy Sorot Pro,</li>
+      <li>this website, when you visit it.</li>
+    </ul>
+  </div>
+
+  <h2>What stays on your Mac</h2>
+  <p><b>Your voice.</b> Speech is turned into text by Apple's speech models, running on your Mac. Sorot doesn't record audio, and nothing you say is uploaded or saved.</p>
+  <p><b>The microphone and Mac audio.</b> Sorot listens only while the card is open and you've pressed start. Fold it back into the notch and it stops. macOS asks for your permission first, and you can take it back any time in System Settings › Privacy &amp; Security.</p>
+  <p><b>Your script.</b> The last script you pasted is saved in Sorot's settings on your Mac, so it's there next time. Clearing it in the app removes it. Listen's captions stay in memory until you copy them or close the card. If you buy Pro, your license key, which includes your email address, is saved in the same settings.</p>
+  <p><b>Checking unclear lines.</b> When a line could be a cue or something to say, a model on your Mac decides. That's Apple Intelligence, or Gemma if you run it yourself with Ollama on the same Mac (Sorot only talks to it at 127.0.0.1). The model sees that one line. It can label it, but it can't change it.</p>
+  <p><b>Your screen.</b> By default the card stays out of screen shares and recordings, so the people on your call don't see your notes. You can change this in the app.</p>
+
+  <h2>What goes over the internet</h2>
+  <p><b>Update check, once a day.</b> Sorot downloads a small file, <code>sorot.app/latest.json</code> (or the same file on <code>rzrizaldy.github.io</code> as a fallback), to see whether there's a new version. New versions download from GitHub. These requests carry no ID. Like any web request, they show the server your IP address and the app's version.</p>
+  <p><b>Lyrics, if you turn them on.</b> They're off until you switch them on. Then, for each song you play, Sorot sends the song's title, artist, album and length to <a href="https://lrclib.net">lrclib.net</a>, a free lyrics library, and keeps the result in a cache on your Mac. Nothing about you is sent.</p>
+  <p><b>Buying Sorot Pro.</b> Payment is handled by <a href="https://stripe.com/privacy">Stripe</a>. Sorot never sees your card. After you pay, our small server at <code>api.sorot.app</code> (run on Cloudflare) asks Stripe for your <b>email address</b> and <b>order number</b>, and turns them into your license key. We keep a copy of the key, filed under the order and the email, so we can send it again if you lose it. The key is checked on your Mac, offline. Sorot never calls home to check it.</p>
+
+  <h2>This website</h2>
+  <p>sorot.app is a static site on GitHub Pages. It has no cookies and no analytics. The logo's font comes from Google Fonts. If you pick a colour theme, that choice is saved in your own browser. On a phone, "Send to my Mac" uses your own share sheet, mail app or clipboard, so nothing goes through us. If you came from an ad, the link's campaign tags (like <code>utm_source</code>) are passed on to checkout, so we can tell which ads work. They say which ad, not who you are. GitHub and Google may keep their usual server logs, such as IP addresses.</p>
+
+  <h2>Who else is involved</h2>
+  <ul>
+    <li><b>GitHub</b>: hosts the website and the downloads.</li>
+    <li><b>Stripe</b>: takes payments.</li>
+    <li><b>Cloudflare</b>: runs the license server.</li>
+    <li><b>lrclib.net</b>: lyrics, only if you turn them on.</li>
+    <li><b>Google Fonts</b>: the logo's font on this site.</li>
+  </ul>
+  <p>We don't sell or share your data with anyone else, and we don't use it for ads.</p>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>Turn lyrics off, and nothing about your music leaves the Mac.</li>
+    <li>Want your purchase record deleted, or a copy of what we hold? Email <a href="mailto:support@sorot.app">support@sorot.app</a>. Stripe keeps payment records it has to by law.</li>
+    <li>To remove Sorot completely, delete the app, then <code>~/Library/Preferences/com.rzrizaldy.sorot.plist</code> and <code>~/Library/Caches/com.rzrizaldy.sorot</code>.</li>
+  </ul>
+
+  <h2>Changes and questions</h2>
+  <p>If this changes, we'll update this page and the date at the top. Questions? <a href="mailto:support@sorot.app">support@sorot.app</a>.</p>
+
+  <p class="back"><a class="btn" href="/">Back to Sorot</a></p>
+</main>
+<script src="/phone.js?v=1"></script>
+</body>
+</html>

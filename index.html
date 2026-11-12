@@ -19,7 +19,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@144,750,100&text=Sorot&display=swap">
-<link rel="stylesheet" href="site.css?v=27">
+<link rel="stylesheet" href="site.css?v=29">
 </head>
 <body>
 
@@ -213,6 +213,7 @@
         <article class="tile r"><h3>Shut means off</h3><p>The mic runs only while the card is open and you've pressed start. Fold it back into the notch and it's off.</p></article>
         <article class="tile r"><h3>Only you see it</h3><p>It's set to stay out of screen shares and recordings. Nothing you say is saved.</p></article>
       </div>
+      <p class="links r"><a class="more" href="/privacy/">Read the privacy policy <span aria-hidden="true">›</span></a></p>
     </div>
   </section>
 
@@ -249,8 +250,8 @@
         </li>
         <li>
           <span class="step-n">2</span>
-          <h3>Right-click, Open</h3>
-          <p>Only the first time. It isn't notarized yet, so macOS asks once.</p>
+          <h3>Allow it once</h3>
+          <p>It isn't notarized yet, so macOS stops the first open. Go to System Settings › Privacy &amp; Security, scroll down and click <b>Open Anyway</b>.</p>
         </li>
         <li>
           <span class="step-n">3</span>
@@ -259,7 +260,7 @@
         </li>
       </ol>
       <footer class="foot r">
-        <p class="fine">For anyone who'd rather look up.</p>
+        <p class="fine">For anyone who'd rather look up. · <a href="/privacy/">Privacy</a> · <a href="mailto:support@sorot.app">support@sorot.app</a></p>
         <div class="themes" role="group" aria-label="Colour theme">
           <button type="button" data-theme="light" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.2" fill="currentColor"/><path d="M8 1.2v1.6M8 13.2v1.6M1.2 8h1.6M13.2 8h1.6M3.2 3.2l1.1 1.1M11.7 11.7l1.1 1.1M3.2 12.8l1.1-1.1M11.7 4.3l1.1-1.1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span class="label">Light</span></button>
           <button type="button" data-theme="dark" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.4 10.2A5.8 5.8 0 0 1 5.8 2.6a5.8 5.8 0 1 0 7.6 7.6z" fill="currentColor"/></svg><span class="label">Dark</span></button>
@@ -270,6 +271,7 @@
   </section>
 </main>
 
+<script src="phone.js?v=1"></script>
 <script src="demo.js?v=26"></script>
 </body>
 </html>

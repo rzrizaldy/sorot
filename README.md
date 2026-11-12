@@ -4,7 +4,7 @@ A teleprompter that lives in your Mac's notch. It scrolls while you talk and sto
 
 **[Download the latest version](https://github.com/rzrizaldy/sorot/releases/latest)** · [sorot.app](https://sorot.app/)
 
-Needs macOS 26 or later on Apple silicon. Sorot isn't notarized yet: the first time, right-click the app and choose Open.
+Needs macOS 26 or later on Apple silicon. Sorot isn't notarized yet, so macOS blocks the first open. Go to System Settings › Privacy & Security, scroll down and click **Open Anyway** (once). Prefer Terminal? `xattr -dr com.apple.quarantine /Applications/Sorot.app` does the same.
 
 ## Checking a download
 
