@@ -269,7 +269,7 @@
 
     async function music(id) {
       for (;;) {
-        state({ status: "Paused", live: false, voice: false, label: "your favourite song" });
+        state({ status: "Paused", live: false, voice: false, label: "turn it up" });
         el.flow.textContent = "";
         const lines = SONG.map(([, text]) => {
           const d = document.createElement("span");
@@ -283,7 +283,7 @@
         await sleep(500, id);
         await open(id);
         await sleep(500, id);
-        state({ status: "Spotify", live: true, voice: true, label: "it plays · every line lights up" });
+        state({ status: "Spotify", live: true, voice: true, label: "it plays · you sing" });
         const start = performance.now();
         const end = SONG[SONG.length - 1][0] + 3.2;
         await new Promise((resolve, reject) => {
@@ -308,7 +308,7 @@
           };
           requestAnimationFrame(frame);
         });
-        state({ status: "Paused", voice: false, live: false, label: "pause it from the notch" });
+        state({ status: "Paused", voice: false, live: false, label: "encore?" });
         await sleep(1400, id);
         await close(id);
         await sleep(700, id);
