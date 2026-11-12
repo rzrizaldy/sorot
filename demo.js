@@ -387,9 +387,9 @@
     if (!latest) return;
     const mb = (latest.bytes / 1e6).toFixed(1);
     document.getElementById("latest").textContent = `Version ${latest.version} · ${latest.file} · ${mb} MB · macOS 26+ · Apple silicon`;
-    document.getElementById("sumFile").textContent = latest.file;
-    document.getElementById("sum").textContent = latest.sha256;
-    document.getElementById("sumCopy").dataset.copy = latest.sha256;
+    const link = document.getElementById("sumLink");
+    link.href = `https://github.com/rzrizaldy/sorot/releases/tag/v${latest.version}`;
+    link.title = `SHA-256 ${latest.sha256}`;
   }).catch(() => {});
 
   // Arrive on the slide the address asks for.

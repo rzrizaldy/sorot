@@ -7,7 +7,7 @@
 <meta name="description" content="They can tell when you're reading. Sorot puts your script in the MacBook notch, next to the camera, and scrolls only while you talk.">
 <meta name="theme-color" content="#e6edf2">
 <link rel="icon" href="img/icon.png">
-<link rel="stylesheet" href="site.css?v=11">
+<link rel="stylesheet" href="site.css?v=12">
 </head>
 <body>
 
@@ -191,7 +191,7 @@
       <h2 class="r huge">Look up.</h2>
       <p class="lede r">A small app for Macs with Apple silicon, running macOS 26 or later.</p>
       <p class="links r"><a class="btn" href="https://github.com/rzrizaldy/sorot/releases/latest/download/Sorot.dmg">Download for Mac</a><a class="more" href="https://github.com/rzrizaldy/sorot/releases">All versions <span aria-hidden="true">›</span></a></p>
-      <p class="meta r" id="latest">Sorot.dmg · macOS 26+ · Apple silicon</p>
+      <p class="meta r"><span id="latest">Sorot.dmg · macOS 26+ · Apple silicon</span> · <a id="sumLink" href="https://github.com/rzrizaldy/sorot/releases/latest">SHA-256</a></p>
       <p class="appstore r"><img src="img/mac-app-store.svg" alt="Mac App Store" width="156" height="40"><span class="soon">Coming soon</span></p>
       <ol class="steps r">
         <li>
@@ -210,19 +210,11 @@
           <p>Drop in a script and press Space. Start talking.</p>
         </li>
       </ol>
-      <details class="verify r">
-        <summary>Check the download</summary>
-        <p>SHA-256 of <span id="sumFile">Sorot.dmg</span>:</p>
-        <div class="code"><button class="copy" id="sumCopy" data-copy="">Copy</button><pre><code id="sum">loading…</code></pre></div>
-        <p>In Terminal, from your Downloads folder:</p>
-        <div class="code"><button class="copy" data-copy="shasum -a 256 ~/Downloads/Sorot.dmg">Copy</button><pre><code>shasum -a 256 ~/Downloads/Sorot.dmg</code></pre></div>
-        <p>The two should match exactly.</p>
-      </details>
       <p class="fine foot r">For anyone who'd rather look up.</p>
     </div>
   </section>
 </main>
 
-<script src="demo.js?v=11"></script>
+<script src="demo.js?v=12"></script>
 </body>
 </html>

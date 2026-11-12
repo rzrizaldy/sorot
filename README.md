@@ -6,4 +6,14 @@ A teleprompter that lives in your Mac's notch. It scrolls while you talk and sto
 
 Needs macOS 26 or later on Apple silicon. Sorot isn't notarized yet: the first time, right-click the app and choose Open.
 
+## Checking a download
+
+Every release lists the SHA-256 of `Sorot.dmg` in its notes and attaches it as `Sorot.dmg.sha256`. Compare it with yours:
+
+```bash
+shasum -a 256 ~/Downloads/Sorot.dmg
+```
+
+Sorot's own update check does this for you before it opens a new version.
+
 This repository holds the website and the release downloads. The app's source is private.
