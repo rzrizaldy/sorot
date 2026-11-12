@@ -323,9 +323,9 @@ kbd { display: inline-block; min-width: 30px; padding: 4px 9px; margin-right: 4p
 @media (max-width: 560px) { .foot { justify-content: center; } }
 
 /* ---------- Music: a coral stage light, karaoke in the notch ---------- */
-.slide.music::before { background: radial-gradient(48% 55% at 50% -8%, rgba(239, 138, 107, 0.5), rgba(239, 138, 107, 0.12) 55%, transparent 75%); }
-.grad-music { color: #e2734f; }
-:root[data-theme="dark"] .grad-music { color: #ef8a6b; }
+.slide.music::before { background: radial-gradient(42% 50% at 30% -6%, rgba(255, 77, 157, 0.38), transparent 70%), radial-gradient(42% 50% at 72% -6%, rgba(77, 107, 255, 0.32), transparent 70%); }
+.grad-music { color: #d6246f; }
+:root[data-theme="dark"] .grad-music { color: #ff4d9d; }
 .slide.music .tiles { margin-top: 14px; }
 .slide.music .tile { padding: 16px 20px; border-radius: 22px; }
 .slide.music .tile h3 { font-size: 17px; margin-bottom: 4px; }
@@ -333,8 +333,10 @@ kbd { display: inline-block; min-width: 30px; padding: 4px 9px; margin-right: 4p
 .slide.music .lede { margin-top: 12px; }
 .slide.music .demo { margin-top: 18px; }
 .slide.music .voice { margin-top: -6px; }
-.card[data-mode="music"] { --accent: #ef8a6b; }
-.music .notch-wrap { --haze: rgba(239, 138, 107, 0.5); }
+.card[data-mode="music"] { --accent: #ff4d9d; }
+.music .notch-wrap { --haze: rgba(255, 77, 157, 0.75); }
+.music .notch-wrap::before { background: radial-gradient(55% 80% at 35% 112%, var(--haze), transparent 70%), radial-gradient(55% 80% at 70% 115%, rgba(77, 107, 255, 0.7), transparent 70%); }
+.music .notch-wrap::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 36px; pointer-events: none; background: var(--mwave, none); opacity: 0.9; }
 .card[data-mode="music"] .c-tab[data-tab="music"] { color: #f7f2e8; background: rgba(255, 255, 255, 0.13); }
 .card[data-mode="music"] .c-flow { text-align: center; }
 .k-line { display: block; height: 31px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0.5; transition: opacity 0.4s ease, transform 0.5s var(--bounce); }

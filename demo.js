@@ -164,10 +164,28 @@
       scrollY += (scrollTarget - scrollY) * (1 - Math.exp(-dt * 9));
       el.flow.style.transform = `translateY(${-scrollY.toFixed(2)}px)`;
       const t = now / 1000;
+      if (kind === "music") {
+        const beat = t * 118 / 60;
+        const kick = speaking ? Math.pow(Math.max(0, Math.cos(beat * 2 * Math.PI)), 6) * 0.6 + 0.35 : 0.05;
+        const wave = (amp, freq, speed, off) => {
+          let d = "M0 36";
+          for (let x = 0; x <= 540; x += 12) {
+            const u = x / 540, env = Math.pow(Math.sin(u * Math.PI), 0.8);
+            const v = 0.5 + 0.5 * Math.sin(u * freq * 2 * Math.PI + t * speed + off);
+            d += ` L${x} ${(36 - amp * kick * env * (0.35 + 0.65 * v)).toFixed(1)}`;
+          }
+          return d + " L540 36 Z";
+        };
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 36' preserveAspectRatio='none'>` +
+          `<path d='${wave(30, 1.6, 2.2, 0)}' fill='%234d6bff' fill-opacity='0.6'/>` +
+          `<path d='${wave(24, 2.5, -2.9, 1.7)}' fill='%23ff4d9d' fill-opacity='0.55'/>` +
+          `<path d='${wave(14, 3.7, 3.6, 3.4)}' fill='%23d7ff4f' fill-opacity='0.35'/></svg>`;
+        wrap.style.setProperty("--mwave", `url("data:image/svg+xml;utf8,${svg}") bottom / 100% 100% no-repeat`);
+      }
       bars.forEach((b, i) => {
         const energy = speaking ? 0.35 + 0.65 * Math.abs(Math.sin(t * 7.3 + i * 0.9) * Math.sin(t * 3.1 + i * 0.37)) : 0.02;
         b.style.height = `${4 + 32 * energy * (0.35 + 0.65 * Math.sin((i / (bars.length - 1)) * Math.PI))}px`;
-        b.style.background = !speaking ? "rgba(23,34,45,0.22)" : kind === "listen" ? `hsl(${275 + 95 * (i / bars.length)} 95% 68%)` : kind === "music" ? `hsl(${8 + 30 * (i / bars.length)} 85% 66%)` : "#e0901f";
+        b.style.background = !speaking ? "rgba(23,34,45,0.22)" : kind === "listen" ? `hsl(${275 + 95 * (i / bars.length)} 95% 68%)` : kind === "music" ? `hsl(${330 - 100 * (i / bars.length)} 95% 66%)` : "#e0901f";
       });
       raf = requestAnimationFrame(loop);
     }
