@@ -1,4 +1,4 @@
-// TatapAksar's landing page: a deck you scroll, one idea per screen.
+// Tertatapp's landing page: a deck you scroll, one idea per screen.
 // The notch demos replay the app: the same curtain curves as the notch shell
 // (widen, then drop with a soft spring) and the same behaviour as the prompter
 // (it moves while the voice is live and waits when it stops).
