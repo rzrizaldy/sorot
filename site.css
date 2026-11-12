@@ -321,3 +321,25 @@ kbd { display: inline-block; min-width: 30px; padding: 4px 9px; margin-right: 4p
 .foot { margin: 48px auto 0; max-width: 760px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
 .foot .fine { margin: 0; font-size: 12px; }
 @media (max-width: 560px) { .foot { justify-content: center; } }
+
+/* ---------- Music: a coral stage light, karaoke in the notch ---------- */
+.slide.music::before { background: radial-gradient(48% 55% at 50% -8%, rgba(239, 138, 107, 0.5), rgba(239, 138, 107, 0.12) 55%, transparent 75%); }
+.grad-music { color: #e2734f; }
+:root[data-theme="dark"] .grad-music { color: #ef8a6b; }
+.slide.music .tiles { margin-top: 14px; }
+.slide.music .tile { padding: 16px 20px; border-radius: 22px; }
+.slide.music .tile h3 { font-size: 17px; margin-bottom: 4px; }
+.slide.music .tile p { font-size: 14.5px; }
+.slide.music .lede { margin-top: 12px; }
+.slide.music .demo { margin-top: 18px; }
+.slide.music .voice { margin-top: -6px; }
+.card[data-mode="music"] { --accent: #ef8a6b; }
+.music .notch-wrap { --haze: rgba(239, 138, 107, 0.5); }
+.card[data-mode="music"] .c-tab[data-tab="music"] { color: #f7f2e8; background: rgba(255, 255, 255, 0.13); }
+.card[data-mode="music"] .c-flow { text-align: center; }
+.k-line { display: block; height: 31px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0.5; transition: opacity 0.4s ease, transform 0.5s var(--bounce); }
+.k-line.past { opacity: 0.25; }
+.k-line.now { opacity: 1; transform: scale(1.04); background: linear-gradient(90deg, var(--accent) var(--p, 0%), #f7f2e8 var(--p, 0%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.c-song { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.1; padding-left: 4px; }
+.c-song b { font: 700 10.5px var(--sans); color: #f7f2e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-song i { font: 500 9.5px var(--sans); font-style: normal; color: #8e8a83; }

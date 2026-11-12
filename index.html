@@ -15,7 +15,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@144,750,100&text=Sorot&display=swap">
-<link rel="stylesheet" href="site.css?v=20">
+<link rel="stylesheet" href="site.css?v=24">
 </head>
 <body>
 
@@ -26,6 +26,7 @@
     <a href="#script">Script</a>
     <a href="#time">Time</a>
     <a href="#listen">Listen</a>
+    <a href="#music">Music</a>
     <a href="#private">Privacy</a>
   </nav>
   <div class="nav-right">
@@ -139,7 +140,6 @@
       <p class="eyebrow r"><span class="grad-vice">Listen</span></p>
       <h2 class="r">Didn't catch that?<br><span class="grad-vice">Read it.</span></h2>
       <p class="lede r">Switch to Listen and the notch captions whoever is talking: the person across the table, or the call on your Mac. Copy the transcript when they're done.</p>
-      <p class="lede r">And when the music's on, flip to <b>Music</b>: what Spotify or Apple Music is playing, its lyrics lit up line by line, karaoke-style.</p>
       <div class="demo r" data-demo="listen">
         <div class="screen">
           <div class="menubar"><span><b>FaceTime</b><i>File</i><i>Edit</i><i>Video</i></span><span><i>Thu 9:41</i></span></div>
@@ -160,6 +160,42 @@
           <div class="camera" aria-hidden="true"></div>
         </div>
         <div class="voice"><div class="wave" data-el="wave" aria-hidden="true"></div><p class="voice-label" data-el="label">someone else's voice</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide music" id="music" data-title="Music">
+    <div class="wrap center">
+      <p class="eyebrow r"><span class="grad-music">Music</span></p>
+      <h2 class="r">Sing like nobody's<br><span class="grad-music">reading.</span></h2>
+      <p class="lede r">Hit play in Spotify or Apple Music and the notch turns into karaoke. Every line lights up the moment it's sung, right under your camera. Skip, pause, or click a line to jump to the chorus.</p>
+      <div class="demo r" data-demo="music">
+        <div class="screen">
+          <div class="menubar"><span><b>Spotify</b><i>File</i><i>Edit</i><i>Playback</i></span><span><i>Fri 11:58 PM</i></span></div>
+          <div class="notch-wrap">
+            <div class="card" data-mode="music">
+              <div class="c-top">
+                <div class="c-tabs"><span class="c-tab" data-tab="prompter">≡</span><span class="c-tab" data-tab="listen">“”</span><span class="c-tab" data-tab="music">♪ Music</span></div>
+                <div class="c-gap"></div>
+                <div class="c-status"><span data-el="status">Paused</span><span class="c-dot" data-el="dot"></span></div>
+              </div>
+              <div class="c-stage"><div class="c-flow" data-el="flow"></div></div>
+              <div class="c-foot">
+                <span class="c-chip">⏮</span><span class="c-play" data-el="play"></span><span class="c-chip">⏭</span>
+                <span class="c-song"><b>Night Drive</b><i>The Notch Band</i></span>
+                <span class="c-time" data-el="time">0:00 / 3:12</span>
+                <span class="c-chip">A</span><span class="c-chip">A</span>
+              </div>
+            </div>
+          </div>
+          <div class="camera" aria-hidden="true"></div>
+        </div>
+        <div class="voice"><div class="wave" data-el="wave" aria-hidden="true"></div><p class="voice-label" data-el="label">your favourite song</p></div>
+      </div>
+      <div class="tiles three left">
+        <article class="tile r"><h3>Right on the beat</h3><p>Lines are timed to the song, so the words land when the singer does.</p></article>
+        <article class="tile r"><h3>Your remote, up top</h3><p>Play, pause and skip from the notch, or with Space and the arrow keys.</p></article>
+        <article class="tile r"><h3>Lyrics when you want them</h3><p>Off until you turn them on. Then only the song's title and artist go to lrclib.net to fetch them.</p></article>
       </div>
     </div>
   </section>
@@ -230,6 +266,6 @@
   </section>
 </main>
 
-<script src="demo.js?v=22"></script>
+<script src="demo.js?v=23"></script>
 </body>
 </html>

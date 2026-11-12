@@ -103,6 +103,17 @@
     { read: 9 }, { wait: 1500, label: "[pause] · it waits" },
     { read: 24 },
   ];
+  // Original lines, written for this demo, with their times in seconds.
+  const SONG = [
+    [0.0, "Headlights on the empty road"],
+    [3.2, "Radio low, the city glows"],
+    [6.4, "Every word I never said"],
+    [9.4, "Lights up right above my head"],
+    [12.6, "Turn it up, the night is ours"],
+    [15.6, "Singing back to all the stars"],
+    [18.8, "One more time, you know the part"],
+    [21.8, "Right on time, straight from the heart"],
+  ];
   const HEARD = [
     "So the short answer is yes, we can ship it this quarter.",
     "The longer answer depends on how the pilot goes in Jakarta next week.",
@@ -156,7 +167,7 @@
       bars.forEach((b, i) => {
         const energy = speaking ? 0.35 + 0.65 * Math.abs(Math.sin(t * 7.3 + i * 0.9) * Math.sin(t * 3.1 + i * 0.37)) : 0.02;
         b.style.height = `${4 + 32 * energy * (0.35 + 0.65 * Math.sin((i / (bars.length - 1)) * Math.PI))}px`;
-        b.style.background = !speaking ? "rgba(23,34,45,0.22)" : kind === "listen" ? `hsl(${275 + 95 * (i / bars.length)} 95% 68%)` : "#e0901f";
+        b.style.background = !speaking ? "rgba(23,34,45,0.22)" : kind === "listen" ? `hsl(${275 + 95 * (i / bars.length)} 95% 68%)` : kind === "music" ? `hsl(${8 + 30 * (i / bars.length)} 85% 66%)` : "#e0901f";
       });
       raf = requestAnimationFrame(loop);
     }
@@ -256,6 +267,54 @@
       }
     }
 
+    async function music(id) {
+      for (;;) {
+        state({ status: "Paused", live: false, voice: false, label: "your favourite song" });
+        el.flow.textContent = "";
+        const lines = SONG.map(([, text]) => {
+          const d = document.createElement("span");
+          d.className = "k-line";
+          d.textContent = text;
+          el.flow.appendChild(d);
+          return d;
+        });
+        scrollTarget = scrollY = -31; // the first line starts in the middle row
+        el.time.textContent = "0:00 / 3:12";
+        await sleep(500, id);
+        await open(id);
+        await sleep(500, id);
+        state({ status: "Spotify", live: true, voice: true, label: "it plays · every line lights up" });
+        const start = performance.now();
+        const end = SONG[SONG.length - 1][0] + 3.2;
+        await new Promise((resolve, reject) => {
+          const frame = (now) => {
+            if (!alive(id)) return reject(new Error("left"));
+            const t = (now - start) / 1000;
+            let i = -1;
+            for (let k = 0; k < SONG.length; k++) if (SONG[k][0] <= t) i = k;
+            lines.forEach((d, k) => {
+              d.classList.toggle("now", k === i);
+              d.classList.toggle("past", k < i);
+            });
+            if (i >= 0) {
+              const next = i + 1 < SONG.length ? SONG[i + 1][0] : SONG[i][0] + 3.2;
+              const p = Math.max(0, Math.min(1, (t - SONG[i][0]) / ((next - SONG[i][0]) * 0.85)));
+              lines[i].style.setProperty("--p", `${(p * 100).toFixed(1)}%`);
+              scrollTarget = (i - 1) * 31;
+            }
+            const secs = Math.floor(t + 41);
+            el.time.textContent = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")} / 3:12`;
+            t < end ? requestAnimationFrame(frame) : resolve();
+          };
+          requestAnimationFrame(frame);
+        });
+        state({ status: "Paused", voice: false, live: false, label: "pause it from the notch" });
+        await sleep(1400, id);
+        await close(id);
+        await sleep(700, id);
+      }
+    }
+
     setShape(NW, NH);
     return {
       enter() {
@@ -270,13 +329,16 @@
           if (kind === "prompter") {
             buildScript().slice(0, 10).forEach((w) => w.classList.add("said"));
             state({ status: "Waiting for you", live: true, voice: false, label: "it waits while you're quiet" });
+          } else if (kind === "music") {
+            el.flow.innerHTML = SONG.slice(0, 3).map(([, t], k) => `<span class="k-line${k === 1 ? " now" : k === 0 ? " past" : ""}" style="--p:60%">${t}</span>`).join("");
+            state({ status: "Spotify", live: true, voice: false, label: "every line lights up" });
           } else {
             el.flow.textContent = HEARD[0];
             state({ status: "Listening", live: true, voice: false, label: "captions, as they speak" });
           }
           return;
         }
-        (kind === "prompter" ? prompter(id) : listen(id)).catch(() => {});
+        (kind === "prompter" ? prompter(id) : kind === "music" ? music(id) : listen(id)).catch(() => {});
       },
       leave() {
         run++;
