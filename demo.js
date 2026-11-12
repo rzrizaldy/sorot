@@ -11,6 +11,8 @@
   const easeInCubic = (x) => x * x * x;
   const spring = (x) => (x >= 1 ? 1 : 1 - Math.exp(-7 * x) * Math.cos(8 * x));
 
+  const replaceAddress = History.prototype.replaceState.bind(history);
+
   // ───────────────────────── Deck ─────────────────────────
   const deck = document.getElementById("deck");
   const slides = [...deck.querySelectorAll(".slide")];
@@ -49,7 +51,9 @@
     next.classList.toggle("end", i === slides.length - 1);
     next.setAttribute("aria-label", i === slides.length - 1 ? "Back to the top" : "Next slide");
     navLinks.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === `#${slide.id}`));
-    if (location.hash !== `#${slide.id}`) history.replaceState(null, "", i === 0 ? location.pathname : `#${slide.id}`);
+    // Keep ?utm_… in the address: analytics reads the campaign from it.
+    if (location.hash !== `#${slide.id}`) replaceAddress(null, "", location.pathname + location.search + (i === 0 ? "" : `#${slide.id}`));
+    if (i > 0) window.sorotTrack?.("slide_view", { slide: slide.id, n: i + 1 });
     scenes.get(slide)?.enter();
   }
 

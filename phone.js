@@ -59,6 +59,7 @@
 
   let lastFocus = null;
   function open() {
+    window.sorotTrack?.("send_to_mac_open");
     lastFocus = document.activeElement;
     sheet.hidden = false;
     requestAnimationFrame(() => sheet.classList.add("on"));
@@ -71,6 +72,7 @@
   sheet.addEventListener("click", async (e) => {
     if (e.target.closest("[data-close]")) return close();
     const act = e.target.closest("[data-act]")?.dataset.act;
+    if (act) window.sorotTrack?.("send_to_mac", { method: act });
     if (act === "share") {
       try { await navigator.share({ title: "Sorot", text: "Sorot, the teleprompter in your Mac's notch. Open on your Mac:", url: pageLink }); close(); } catch {}
     } else if (act === "copy") {
