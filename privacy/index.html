@@ -35,7 +35,7 @@
   .doc .tile ul { margin-top: 10px; }
   .back { margin-top: 48px; }
 </style>
-<script src="/analytics.js?v=1"></script>
+<script src="/analytics.js?v=2"></script>
 </head>
 <body>
 
@@ -49,10 +49,10 @@
 <main class="doc">
   <p class="eyebrow green">Privacy</p>
   <h1>Nothing leaves this Mac.<br><span class="dim">Almost nothing. Here's all of it.</span></h1>
-  <p class="updated">Last updated November 12, 2026 (website analytics added)</p>
+  <p class="updated">Last updated November 12, 2026 (cookieless website analytics)</p>
 
   <div class="tile short">
-    <p><strong>The short version.</strong> Sorot listens and thinks on your Mac. There's no account, no analytics and no ads. Only four things ever go over the internet:</p>
+    <p><strong>The short version.</strong> Sorot listens and thinks on your Mac. The app has no account, no analytics and no ads. Only four things ever go over the internet:</p>
     <ul>
       <li>a daily check for updates,</li>
       <li>song lyrics, only if you turn them on,</li>
@@ -74,14 +74,19 @@
   <p><b>Buying Sorot Pro.</b> Payment is handled by <a href="https://stripe.com/privacy">Stripe</a>. Sorot never sees your card. After you pay, our small server at <code>api.sorot.app</code> (run on Cloudflare) asks Stripe for your <b>email address</b> and <b>order number</b>, and turns them into your license key. We keep a copy of the key, filed under the order and the email, so we can send it again if you lose it. The key is checked on your Mac, offline. Sorot never calls home to check it.</p>
 
   <h2>This website</h2>
-  <p>sorot.app is a static site on GitHub Pages. It counts visits with <a href="https://gelitik.allrize.tech">Gelitik</a>, our own analytics: which pages and slides people reach, and clicks on Download, Get Pro and "Send to my Mac". It sets two first-party cookies, a random visitor id (one year) and a session id (30 minutes). No ad trackers, no fingerprinting, and no IP addresses are stored. If your browser sends Global Privacy Control, the site counts nothing. When you buy, that random visitor id goes to Stripe with the order, and our server tells Gelitik that a purchase happened and how much, so we can see which ads lead to purchases. Never your email or card. The logo's font comes from Google Fonts. If you pick a colour theme, that choice is saved in your own browser. On a phone, "Send to my Mac" uses your own share sheet, mail app or clipboard, so nothing goes through us. If you came from an ad, the link's campaign tags (like <code>utm_source</code>) are passed on to checkout, so we can tell which ads work. They say which ad, not who you are. GitHub and Google may keep their usual server logs, such as IP addresses.</p>
+  <p>sorot.app is a static site on GitHub Pages. It counts visits without cookies and without an ID for you, in two ways:</p>
+  <ul>
+    <li><a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a> counts page views, where visits come from, countries and page speed. It sets no cookies and doesn't follow you to other sites.</li>
+    <li>Our own counter at <code>api.sorot.app</code> notes each page view, which slides people reach, and clicks on Download, Get Pro and "Send to my Mac". Each note holds the page, the campaign tags from the link you came in on (like <code>utm_source</code>), the website that sent you (just its name), your country and the kind of device (Mac, iPhone…). No IP address, no visitor ID, nothing that says who you are.</li>
+  </ul>
+  <p>To remember which ad you came from while you look around, the campaign tags are kept in this browser tab only (session storage), and disappear when you close it. When you buy, those tags (not you) go to Stripe with the order, so our server can count one purchase, and how much, against that ad. Never your email or card. If your browser sends Global Privacy Control, the site counts nothing.</p>
+  <p>The logo's font comes from Google Fonts. If you pick a colour theme, that choice is saved in your own browser. On a phone, "Send to my Mac" uses your own share sheet, mail app or clipboard, so nothing goes through us. GitHub and Google may keep their usual server logs, such as IP addresses.</p>
 
   <h2>Who else is involved</h2>
   <ul>
     <li><b>GitHub</b>: hosts the website and the downloads.</li>
     <li><b>Stripe</b>: takes payments.</li>
-    <li><b>Cloudflare</b>: runs the license server.</li>
-    <li><b>Gelitik</b>: counts visits to this website (our own tool, run on Cloudflare).</li>
+    <li><b>Cloudflare</b>: runs the license server and our visit counter, and provides Web Analytics.</li>
     <li><b>lrclib.net</b>: lyrics, only if you turn them on.</li>
     <li><b>Google Fonts</b>: the logo's font on this site.</li>
   </ul>

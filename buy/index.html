@@ -6,7 +6,7 @@
 <title>Get Sorot Pro</title>
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://sorot.app/">
-<script src="/analytics.js?v=1"></script>
+<script src="/analytics.js?v=2"></script>
 <noscript><meta http-equiv="refresh" content="0; url=https://buy.stripe.com/6oU8wQgvtaOT3cigH96Na00"></noscript>
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px -apple-system,BlinkMacSystemFont,system-ui,sans-serif;background:#e6edf2;color:#17222d}a{color:#b37a22}</style>
 </head>
@@ -24,19 +24,18 @@
       const v = here.get(k);
       if (v) link.searchParams.set(k, v.slice(0, 200));
     }
-    // The Gelitik visitor id (first-party cookie) rides along as client_reference_id,
-    // so the license server can credit the purchase to the campaign that brought them.
-    const vid = (document.cookie.match(/(?:^|; )gelitik_vid=([^;]*)/) || [])[1];
-    if (vid && /^[A-Za-z0-9_-]{8,64}$/.test(vid) && !link.searchParams.get("client_reference_id")) link.searchParams.set("client_reference_id", vid);
-    // Count the checkout start (Gelitik's beacon format; site key from /analytics.js).
-    try {
-      const site = window.SOROT_GELITIK_SITE;
-      if (vid && site && /^gk_[A-Za-z0-9]{16,40}$/.test(site) && navigator.globalPrivacyControl !== true) {
-        const sid = (document.cookie.match(/(?:^|; )gelitik_sid=([^;]*)/) || [])[1] || vid;
-        const body = JSON.stringify({ k: site, t: "checkout_start", u: location.href, r: document.referrer || null, v: vid, s: sid, p: { where: "buy_page" } });
-        navigator.sendBeacon("https://gelitik.allrize.tech/e", new Blob([body], { type: "text/plain" }));
+    // The campaign (not the person) rides along as client_reference_id,
+    // c__source__medium__campaign__content, so the license server can count the
+    // purchase against the ad. Stripe allows letters, digits, dashes and underscores.
+    const c = (window.sorotCampaign && window.sorotCampaign()) || {};
+    const part = (v) => String(v || "").toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 45);
+    if ((c.s || c.c) && !link.searchParams.get("client_reference_id")) {
+      link.searchParams.set("client_reference_id", ["c", part(c.s), part(c.m), part(c.c), part(c.ct)].join("__"));
+      for (const [k, v] of [["utm_source", c.s], ["utm_medium", c.m], ["utm_campaign", c.c], ["utm_content", c.ct]]) {
+        if (v && !link.searchParams.get(k)) link.searchParams.set(k, String(v).slice(0, 200));
       }
-    } catch {}
+    }
+    window.sorotTrack && window.sorotTrack("checkout_start", { where: "buy_page" });
     document.getElementById("go").href = link.href;
     location.replace(link.href);
   })();
