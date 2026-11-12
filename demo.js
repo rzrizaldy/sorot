@@ -334,6 +334,18 @@
     });
   })();
 
+  // ───────────────────────── Theme: Light, Dark, Colorful ─────────────────────────
+  const themeColors = { light: "#e6edf2", dark: "#0f141a", colorful: "#124d36" };
+  const themeButtons = [...document.querySelectorAll(".themes button")];
+  function setTheme(theme, save) {
+    document.documentElement.dataset.theme = theme;
+    themeButtons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.theme === theme)));
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", themeColors[theme]);
+    if (save) try { localStorage.setItem("sorot-theme", theme); } catch {}
+  }
+  themeButtons.forEach((b) => b.addEventListener("click", () => setTheme(b.dataset.theme, true)));
+  setTheme(document.documentElement.dataset.theme || "light", false);
+
   // ───────────────────────── The logo's eyes ─────────────────────────
   // The pupils follow the pointer, blink now and then, and the whole word hops
   // when you touch it: squash, stretch, land.
