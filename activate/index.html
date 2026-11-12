@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activate Sorot Pro · Sorot</title>
+<meta name="description" content="How to turn on Sorot Pro with your license key, and what to do if you lose it.">
+<link rel="canonical" href="https://sorot.app/activate/">
+<meta name="theme-color" content="#e6edf2">
+<link rel="icon" href="/img/icon.png?v=2">
+<script>
+  try {
+    const saved = localStorage.getItem("sorot-theme");
+    document.documentElement.dataset.theme = saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  } catch { document.documentElement.dataset.theme = "light"; }
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@144,750,100&text=Sorot&display=swap">
+<link rel="stylesheet" href="/site.css?v=29">
+<style>
+  body { overflow: auto; background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%) fixed; }
+  .doc { position: relative; max-width: 720px; margin: 0 auto; padding: calc(var(--nav) + 56px) 22px 80px; }
+  .doc::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(46% 40% at 50% -6%, var(--glow-1), var(--glow-2) 55%, transparent 75%); }
+  .doc h1 { font-size: clamp(40px, 6vw, 64px); }
+  .doc .updated { margin-top: 12px; color: var(--gray); font-size: 14px; font-weight: 500; }
+  .doc .short { margin-top: 28px; }
+  .doc h2 { font-size: 26px; letter-spacing: -0.015em; margin: 44px 0 12px; line-height: 1.2; }
+  .doc p, .doc li { color: var(--gray); font-size: 17px; line-height: 1.55; font-weight: 500; }
+  .doc p + p { margin-top: 12px; }
+  .doc strong, .doc b { color: var(--text); font-weight: 650; }
+  .doc ul { padding-left: 20px; margin: 12px 0 0; display: grid; gap: 8px; }
+  .doc a:not(.btn) { color: var(--cue); font-weight: 600; }
+  .doc a:not(.btn):hover { text-decoration: underline; }
+  .doc .tile p { font-size: 17px; }
+  .doc .tile ul { margin-top: 10px; }
+  .back { margin-top: 48px; }
+  .steps-doc { list-style: none; counter-reset: s; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+  .steps-doc li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; background: var(--tile); border-radius: 20px; padding: 18px 20px; }
+  .steps-doc li::before { content: counter(s); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--lamp); color: var(--lamp-ink); font-weight: 700; }
+  .steps-doc li p { margin: 0; }
+  .key { font: 13px/1.5 ui-monospace, "SF Mono", Menlo, monospace; background: color-mix(in srgb, var(--text) 7%, transparent); padding: 2px 6px; border-radius: 6px; color: var(--text); }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="/"><span class="logo" role="img" aria-label="Sorot"><span class="ch" aria-hidden="true">S</span><span class="specs" aria-hidden="true"><span class="arch"></span><span class="lens a"><span class="pupil"></span><span class="lid"></span></span><span class="nose">r</span><span class="lens b"><span class="pupil"></span><span class="lid"></span></span></span><span class="ch" aria-hidden="true">t</span></span></a>
+  <div class="nav-right">
+    <a class="get" href="https://github.com/rzrizaldy/sorot/releases/latest/download/Sorot.dmg">Download</a>
+  </div>
+</header>
+
+<main class="doc">
+  <p class="eyebrow green">Sorot Pro</p>
+  <h1>Turn on Pro.<br><span class="dim">It takes one click.</span></h1>
+  <p class="updated">Your key looks like <span class="key">SOROT-eyJ2Ijox…</span>. It works offline and has no expiry.</p>
+
+  <h2>Right after you pay</h2>
+  <ol class="steps-doc">
+    <li><p>Stripe brings you to a <b>Thank you</b> page with your license key.</p></li>
+    <li><p>Click <b>Activate in Sorot</b>. If your browser asks to open Sorot, allow it.</p></li>
+    <li><p>Sorot says <b>"Sorot Pro is on."</b> The glasses in your menu bar now show <b>Sorot Pro · your email</b>.</p></li>
+  </ol>
+  <p style="margin-top:14px">Keep the key: copy it from that page, or save the page. You'll want it on a new Mac.</p>
+
+  <h2>Pasting the key by hand</h2>
+  <ol class="steps-doc">
+    <li><p>Copy your key, the whole line starting with <span class="key">SOROT-</span>.</p></li>
+    <li><p>Click the <b>glasses</b> in your Mac's menu bar and choose <b>Enter License Key…</b> Or, in the notch, click <b>I have a key</b> on the Pro card.</p></li>
+    <li><p>The key is already filled in from your clipboard. Click <b>Activate</b>.</p></li>
+  </ol>
+
+  <h2>Using a promo code</h2>
+  <p>On the checkout page, click <b>Add promotion code</b> and type your code. If it makes the total $0, finish checkout anyway: you'll land on the same Thank you page with your key.</p>
+
+  <h2>Something not working?</h2>
+  <ul>
+    <li><b>"That key doesn't look right."</b> Copy it again, all of it, with no spaces before or after.</li>
+    <li><b>The Thank you page says "Almost there".</b> Stripe hasn't confirmed the payment yet. Wait a moment and reload it.</li>
+    <li><b>Lost your key, or setting up a new Mac?</b> Email <a href="mailto:support@sorot.app">support@sorot.app</a> from the address you paid with, and we'll send it again.</li>
+  </ul>
+
+  <p class="back"><a class="btn" href="/buy/">Get Sorot Pro · $8.99</a> &nbsp; <a href="/">Back to Sorot</a></p>
+</main>
+<script src="/phone.js?v=1"></script>
+</body>
+</html>
