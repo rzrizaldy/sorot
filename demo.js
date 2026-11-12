@@ -54,9 +54,14 @@
   }
 
   // The slide that fills most of the screen is the current one.
+  // Measured against the screen, not the slide, so a slide taller than the
+  // window (a short laptop screen) still becomes current when it fills it.
   const watcher = new IntersectionObserver((entries) => {
-    for (const e of entries) if (e.isIntersecting) activate(slides.indexOf(e.target));
-  }, { root: deck, threshold: 0.55 });
+    for (const e of entries) {
+      const screen = e.rootBounds?.height || innerHeight;
+      if (e.isIntersecting && e.intersectionRect.height >= screen * 0.5) activate(slides.indexOf(e.target));
+    }
+  }, { root: deck, threshold: Array.from({ length: 21 }, (_, i) => i / 20) });
   slides.forEach((s) => watcher.observe(s));
 
   next.addEventListener("click", () => go(current === slides.length - 1 ? 0 : current + 1));
