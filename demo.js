@@ -382,6 +382,16 @@
     setTimeout(() => (button.textContent = "Copy"), 1400);
   }));
 
+  // The latest build and its checksum, written by the publish script.
+  fetch("latest.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).then((latest) => {
+    if (!latest) return;
+    const mb = (latest.bytes / 1e6).toFixed(1);
+    document.getElementById("latest").textContent = `Version ${latest.version} · ${latest.file} · ${mb} MB · macOS 26+ · Apple silicon`;
+    document.getElementById("sumFile").textContent = latest.file;
+    document.getElementById("sum").textContent = latest.sha256;
+    document.getElementById("sumCopy").dataset.copy = latest.sha256;
+  }).catch(() => {});
+
   // Arrive on the slide the address asks for.
   const wanted = slides.findIndex((s) => `#${s.id}` === location.hash);
   if (wanted > 0) deck.scrollTo({ top: slides[wanted].offsetTop, behavior: "auto" });
