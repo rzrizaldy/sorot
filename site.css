@@ -33,14 +33,14 @@
   --shadow: rgb(0, 0, 0); --glow-1: rgba(255, 189, 92, 0.22); --glow-2: rgba(255, 189, 92, 0.06); --logo-nose: #dcb985;
   color-scheme: dark;
 }
-/* Colourful: British racing green and cream. */
+/* Colourful: the logo lab's Sage. Forest ink on pale sage, a coral nose. */
 :root[data-theme="colorful"] {
-  --bg: #124d36; --bg-2: #0b3324; --tile: #19603f; --text: #f3efe6; --gray: #b3cbbd; --line: rgba(243, 239, 230, 0.14);
-  --lamp: #e8dec7; --lamp-ink: #10261c; --cue: #ecc98a; --amber: #f2c26b; --nav-bg: rgba(18, 77, 54, 0.75); --chip: rgba(25, 96, 63, 0.85);
-  --ring: #5f8f78; --shadow: rgb(2, 20, 12); --glow-1: rgba(255, 214, 140, 0.28); --glow-2: rgba(255, 214, 140, 0.08); --logo-nose: #f2b45a;
-  color-scheme: dark;
+  --bg: #dbe7e2; --bg-2: #c8dad2; --tile: #f4f9f6; --text: #1f3a30; --gray: #4c6a5e; --line: rgba(31, 58, 48, 0.12);
+  --lamp: #ef8a6b; --lamp-ink: #3b160b; --cue: #c45f3d; --amber: #d9704b; --nav-bg: rgba(219, 231, 226, 0.75); --chip: rgba(244, 249, 246, 0.85);
+  --ring: #a8c3b7; --shadow: rgb(31, 58, 48); --glow-1: rgba(239, 138, 107, 0.26); --glow-2: rgba(239, 138, 107, 0.07); --logo-nose: #ef8a6b;
+  color-scheme: light;
 }
-:root[data-theme="colorful"] .btn { box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.6); }
+:root[data-theme="colorful"] .btn { box-shadow: 0 8px 24px -10px rgba(217, 112, 75, 0.6); }
 
 /* The theme switch in the nav. */
 .themes { display: inline-flex; padding: 2px; border-radius: 980px; background: color-mix(in srgb, var(--text) 8%, transparent); }
@@ -314,5 +314,5 @@ kbd { display: inline-block; min-width: 30px; padding: 4px 9px; margin-right: 4p
 .meta { margin-top: 12px; font-size: 13px; color: var(--gray); font-variant-numeric: tabular-nums; }
 .appstore { margin-top: 16px; display: inline-flex; align-items: center; gap: 10px; }
 .appstore img { height: 40px; width: auto; opacity: 0.45; filter: grayscale(1); }
-:root[data-theme="dark"] .appstore img, :root[data-theme="colorful"] .appstore img { filter: grayscale(1) invert(1); opacity: 0.55; }
+:root[data-theme="dark"] .appstore img { filter: grayscale(1) invert(1); opacity: 0.55; }
 .appstore .soon { padding: 4px 11px; border-radius: 980px; background: var(--text); color: var(--bg); font-size: 12px; font-weight: 600; letter-spacing: 0.01em; }

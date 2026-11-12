@@ -335,7 +335,7 @@
   })();
 
   // ───────────────────────── Theme: Light, Dark, Colorful ─────────────────────────
-  const themeColors = { light: "#e6edf2", dark: "#0f141a", colorful: "#124d36" };
+  const themeColors = { light: "#e6edf2", dark: "#0f141a", colorful: "#dbe7e2" };
   const themeButtons = [...document.querySelectorAll(".themes button")];
   function setTheme(theme, save) {
     document.documentElement.dataset.theme = theme;
