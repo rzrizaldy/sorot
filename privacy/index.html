@@ -82,6 +82,7 @@
     <li>Our own counter at <code>api.sorot.app</code> notes each page view, which slides people reach, and clicks on Download, Get Pro and "Send to my Mac". Each note holds the page, the campaign tags from the link you came in on (like <code>utm_source</code>), the website that sent you (just its name), your country and the kind of device (Mac, iPhone…). No IP address, no visitor ID, nothing that says who you are.</li>
   </ul>
   <p>To remember which ad you came from while you look around, the campaign tags are kept in this browser tab only (session storage), and disappear when you close it. When you buy, those tags (not you) go to Stripe with the order, so our server can count one purchase, and how much, against that ad. Never your email or card. If your browser sends Global Privacy Control, the site counts nothing.</p>
+  <p>To show the price in your currency (Rupiah in Indonesia, dollars elsewhere), the page asks <code>api.sorot.app/geo</code> which country your connection comes from. The answer is two letters, kept in this tab only, and nothing is saved on our side.</p>
   <p>The logo's font comes from Google Fonts. If you pick a colour theme, that choice is saved in your own browser. On a phone, "Send to my Mac" uses your own share sheet, mail app or clipboard, so nothing goes through us. GitHub and Google may keep their usual server logs, such as IP addresses.</p>
 
   <h2>Who else is involved</h2>
@@ -107,7 +108,7 @@
 
   <p class="back"><a class="btn" href="/">Back to Sorot</a></p>
 </main>
-<script src="/price.js?v=2"></script>
-<script src="/phone.js?v=5"></script>
+<script src="/price.js?v=3"></script>
+<script src="/phone.js?v=6"></script>
 </body>
 </html>

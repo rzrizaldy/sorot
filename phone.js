@@ -23,6 +23,10 @@
   const ua = navigator.userAgent;
   const handheld = /iPhone|iPod|iPad|Android|Mobile/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   if (!handheld) return;
+  // Wait for price.js to settle the visitor's region (IP country, ~1 s at most): the sheet's
+  // language, price and WhatsApp button depend on it.
+  (window.sorotPriceReady || Promise.resolve()).then(setup);
+  function setup() {
 
   // The link sent to the Mac carries a 20% promo code (see price.js), a reason to act now.
   const CODE = "KIRIMMACBOOK";
@@ -104,4 +108,5 @@
     }
   });
   addEventListener("keydown", (e) => { if (e.key === "Escape" && !sheet.hidden) close(); });
+  }
 })();
