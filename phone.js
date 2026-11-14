@@ -53,7 +53,7 @@
         <a class="btn ${canShare ? "ghost-btn" : ""}" data-act="mail" href="mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">Email it to myself</a>
         <button type="button" class="btn ghost-btn" data-act="copy">Copy link</button>
       </div>
-      <p class="send-fine">macOS 26 · Apple silicon. Free to try; Pro is $8.99, once.</p>
+      <p class="send-fine">macOS 26 · Apple silicon. Free to try; Pro is ${window.sorotPrice || "$8.99"}, once.</p>
     </div>`;
   document.body.appendChild(sheet);
 
