@@ -24,24 +24,27 @@
   const handheld = /iPhone|iPod|iPad|Android|Mobile/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   if (!handheld) return;
 
-  const pageLink = withTags("https://sorot.app/");
+  // The link sent to the Mac carries a 20% promo code (see price.js), a reason to act now.
+  const CODE = "KIRIMMACBOOK";
+  const pageLink = (() => { const u = new URL(withTags("https://sorot.app/")); u.searchParams.set("promo", CODE); return u.href; })();
+  const deal = window.sorotPromoPrice?.(CODE) || "";
   // Visitors in Indonesia (by time zone, see price.js) get the sheet in Indonesian and a
   // WhatsApp button: "Message yourself" there is how most people move a link to their laptop.
   const id = window.sorotPriceRegion === "id";
   const T = id ? {
-    btn: "Kirim ke Mac", link: "Kirim ke Mac", eyebrow: "Sorot jalan di Mac", title: "Kirim ke Mac kamu",
-    lede: "Buka link-nya di Mac, lalu download. Cuma semenit.", share: "Bagikan…", shareSub: "AirDrop, Pesan, Catatan",
+    btn: "Kirim ke Mac · diskon 20%", link: "Kirim ke Mac", eyebrow: "Kirim sekarang, diskon 20%", title: "Kirim ke Mac kamu",
+    lede: `Buka link-nya di Mac dan download. Pro jadi <b>${deal}</b> (dari ${window.sorotPrice}) dengan kode <b>${CODE}</b>, otomatis terpasang dari link ini.`, share: "Bagikan…", shareSub: "AirDrop, Pesan, Catatan",
     mail: "Email ke diri sendiri", copy: "Salin link", copied: "Tersalin. Tempel di Mac kamu",
-    subject: "Sorot, buat Mac-ku", body: "Buka ini di Mac untuk download Sorot, teleprompter di notch:",
+    subject: "Sorot, buat Mac-ku", body: `Buka di Mac untuk download Sorot, teleprompter di notch. Kode diskon 20%: ${CODE} (Pro jadi ${deal}).`,
     shareText: "Sorot, teleprompter di notch Mac. Buka di Mac:",
-    fine: `macOS 26 · Apple silicon. Gratis dicoba; Pro ${window.sorotPrice}, sekali bayar.`,
+    fine: "macOS 26 · Apple silicon. Gratis dicoba, Pro sekali bayar.",
   } : {
-    btn: "Send to my Mac", link: "Send to Mac", eyebrow: "Sorot runs on your Mac", title: "Send it to your Mac",
-    lede: "Open the link there and download. Takes a minute.", share: "Share…", shareSub: "AirDrop, Messages, Notes",
+    btn: "Send to my Mac · 20% off", link: "Send to Mac", eyebrow: "Send it now, 20% off", title: "Send it to your Mac",
+    lede: `Open the link there and download. Pro is <b>${deal}</b> (was ${window.sorotPrice || "$8.99"}) with code <b>${CODE}</b>, already applied from this link.`, share: "Share…", shareSub: "AirDrop, Messages, Notes",
     mail: "Email it to myself", copy: "Copy link", copied: "Copied. Paste it on your Mac",
-    subject: "Sorot, for my Mac", body: "Open this on your Mac to download Sorot, the teleprompter in the notch:",
+    subject: "Sorot, for my Mac", body: `Open this on your Mac to download Sorot, the teleprompter in the notch. 20% off Pro with code ${CODE}.`,
     shareText: "Sorot, the teleprompter in your Mac's notch. Open on your Mac:",
-    fine: `macOS 26 · Apple silicon. Free to try; Pro is ${window.sorotPrice || "$8.99"}, once.`,
+    fine: "macOS 26 · Apple silicon. Free to try; Pro is a one-time payment.",
   };
   const downloads = [...document.querySelectorAll('a[href$="Sorot.dmg"]')];
   downloads.forEach((a) => {

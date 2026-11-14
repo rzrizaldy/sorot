@@ -24,6 +24,13 @@
       const v = here.get(k);
       if (v) link.searchParams.set(k, v.slice(0, 200));
     }
+    // A promo code this browser was sent (see /price.js), e.g. KIRIMMACBOOK from "Send to my Mac".
+    try {
+      const saved = JSON.parse(localStorage.getItem("sorot-promo") || "null");
+      if (saved && saved.until > Date.now() && /^[A-Z0-9]{3,30}$/.test(saved.code) && !link.searchParams.get("prefilled_promo_code")) {
+        link.searchParams.set("prefilled_promo_code", saved.code);
+      }
+    } catch {}
     // The campaign (not the person) rides along as client_reference_id,
     // c__source__medium__campaign__content, so the license server can count the
     // purchase against the ad. Stripe allows letters, digits, dashes and underscores.
